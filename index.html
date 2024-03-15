@@ -46,57 +46,131 @@
         font-size: 16px;
         cursor: pointer;
     }
+
+    .blink {
+        animation: blink-animation 1s steps(5, start) infinite;
+        -webkit-animation: blink-animation 1s steps(5, start) infinite;
+    }
+
+    @keyframes blink-animation {
+        to {
+            visibility: hidden;
+        }
+    }
+
+    @-webkit-keyframes blink-animation {
+        to {
+            visibility: hidden;
+        }
+    }
 </style>
 </head>
 
-<body>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="d-flex justify-content-center mt-5">
-                <h1>Loading...</h1>
+<body style="background-color:#3498db;">
+    <div class="bg-white m-5 rounded-5 shadow-lg">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="d-flex justify-content-center mt-5">
+                    <h1>Crypto Season (2024-2025)</h1>
+
+                </div>
+
+                <div class="d-flex justify-content-center mt-5">
+                    <h2>Loading<span class="blink">...</span> <span id="progressText">0%</span></h>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="progress-bar-container">
-        <div class="progress-bar">
-            <div class="progress px-2" id="progress"><!-- Dynamic percentage will be inserted here --></div>
+        <div class="progress-bar-container">
+            <div class="progress-bar">
+                <div class="progress px-2" id="progress" style="font-size: 18px;">
+                    <!-- Dynamic percentage will be inserted here -->
+                </div>
+            </div>
         </div>
-    </div>
 
-    <!-- Centered div using Bootstrap classes -->
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="input-group mb-3">
-                    <input type="number" id="completedPortion" class="form-control"
-                        placeholder="Enter Completed Portion">
-                    <div class="input-group-append">
-                        <button class="btn btn-primary" type="button  btn-lg" onclick="updateProgress()">Update</button>
+        <!-- Centered div using Bootstrap classes -->
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="input-group mb-3">
+                        <input type="number" id="completedPortion" class="form-control"
+                            placeholder="Enter Completed Portion" value="">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="button  btn-lg"
+                                onclick="updateProgress()">Update</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <script>
-        // Initialize progress bar with default value
-        document.getElementById("progress").style.width = "0%";
 
-        function updateProgress() {
-            var completedPortion = parseFloat(document.getElementById("completedPortion").value);
-            var total = 85000;
+        <!-- Table to display progress updates -->
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Completed Portion</th>
+                                <th>Completed Percentage</th>
+                            </tr>
+                        </thead>
+                        <tbody id="progressTable">
+                            <!-- Progress updates will be inserted here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
 
-            if (isNaN(completedPortion) || completedPortion < 0 || completedPortion > total) {
-                alert("Please enter a valid completed portion between 0 and 85000");
-                return;
+        <script>
+            // Retrieve saved value from localStorage
+            var savedCompletedPortion = localStorage.getItem('completedPortion');
+            if (savedCompletedPortion) {
+                document.getElementById('completedPortion').value = savedCompletedPortion;
+                updateProgress();
             }
 
-            var percentage = (completedPortion / total) * 100;
-            var progress = document.getElementById("progress");
+            function updateProgress () {
+                var completedPortion = parseFloat(document.getElementById("completedPortion").value);
+                var total = 85000;
+                
 
-            progress.style.width = percentage + "%";
-            progress.textContent = percentage.toFixed(2) + "%";
-        }
-    </script>
+                if (isNaN(completedPortion) || completedPortion < 0 || completedPortion > total) {
+                    alert("Please enter a valid completed portion between 0 and 85000");
+                    return;
+                }
+
+                var percentage = (completedPortion / total) * 100;
+                var progress = document.getElementById("progress");
+                var progressText = document.getElementById("progressText");
+
+                progress.style.width = percentage + "%";
+                progress.textContent = percentage.toFixed(2) + "%";
+                progressText.textContent = percentage.toFixed(2) + "%";
+
+                // Save entered value to localStorage
+                localStorage.setItem('completedPortion', completedPortion);
+
+                // Check if it's the first day of the month
+                var currentDate = new Date();
+                var isFirstDayOfMonth = currentDate.getDate() === 1;
+
+                if (isFirstDayOfMonth) {
+                    // Insert a new row into the table with the current date and completed portion
+                    var table = document.getElementById("progressTable");
+                    var newRow = table.insertRow();
+                    var dateCell = newRow.insertCell(0);
+                    var portionCell = newRow.insertCell(1);
+                    var percentageCell = newRow.insertCell(2);
+                    dateCell.textContent = currentDate.toLocaleDateString();
+                    portionCell.textContent = completedPortion;
+                    percentageCell.textContent = percentage.toFixed(2) + "%";
+                }
+            }
+        </script>
+    </div>
 
 </body>
 
