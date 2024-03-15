@@ -66,12 +66,25 @@
 
 <body style="background-color:#3498db;">
     <div class="bg-white m-3 rounded-5 shadow-lg">
+
+        <div class="container p-4">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="input-group mb-3">
+                        <input type="number" id="totalValue" class="form-control" placeholder="Enter Total Value"
+                            value="">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="button" onclick="updateTotal()">Submit Total
+                                Value</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         <div class="container">
             <div class="row justify-content-center">
-<!--                 <div class="d-flex justify-content-center mt-3">
-                    <h1>Crypto Season (2024-2025)</h1>
-                </div> -->
-
                 <div class="d-flex justify-content-center mt-3">
                     <h2>Loading<span class="blink">...</span> <span id="progressText">0%</span></h>
                 </div>
@@ -92,13 +105,14 @@
                         <input type="number" id="completedPortion" class="form-control"
                             placeholder="Enter Completed Portion" value="">
                         <div class="input-group-append">
-                            <button class="btn btn-primary" type="button  btn-lg"
-                                onclick="updateProgress()">Update</button>
+                            <button class="btn btn-primary" type="button" onclick="updateProgress()">Update
+                                Progress</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
 
         <div class="container">
             <div class="row justify-content-center">
@@ -107,8 +121,8 @@
                         <thead>
                             <tr>
                                 <th>Date</th>
-                                <th>Portion</th>
-                                <th>Percentage</th>
+                                <th>Completed Portion</th>
+                                <th>Completed Percentage</th>
                             </tr>
                         </thead>
                         <tbody id="progressTable">
@@ -127,12 +141,13 @@
                 updateProgress();
             }
 
+            // Function to update progress
             function updateProgress() {
                 var completedPortion = parseFloat(document.getElementById("completedPortion").value);
-                var total = 85000;
+                var total = parseFloat(localStorage.getItem('totalValue')) || 85000; // Default total to 85000 if not set
 
                 if (isNaN(completedPortion) || completedPortion < 0 || completedPortion > total) {
-                    alert("Please enter a valid completed portion between 0 and 85000");
+                    alert("Please enter a valid completed portion between 0 and " + total);
                     return;
                 }
 
@@ -162,6 +177,14 @@
                     portionCell.textContent = completedPortion;
                     percentageCell.textContent = percentage.toFixed(2) + "%";
                 }
+            }
+
+            // Function to update total value
+            function updateTotal() {
+                var totalValue = parseFloat(document.getElementById("totalValue").value);
+                var total = isNaN(totalValue) || totalValue <= 0 ? 85000 : totalValue; // Default to 85000 if invalid value
+                localStorage.setItem('totalValue', total); // Save total value to localStorage
+                updateProgress();
             }
         </script>
     </div>
