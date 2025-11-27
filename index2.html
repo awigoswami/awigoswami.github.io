@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>Awinash</title>
+
+  <!-- favicon -->
+  <!-- <link href="favicon.png" rel=icon> -->
+
+  <!-- web-fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet">
+
+  <!-- font-awesome -->
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Style CSS -->
+  <link href="css/style.css" rel="stylesheet">
+
+  <!-- Devicons -->
+  <link href="vendor/devicons/css/devicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+  <style>
+    .skills-badge {
+      background-color: #888888;
+      color: white;
+      font-weight: 600;
+      margin-right: 5px;
+      margin-bottom: 5px;
+      color: rgb(255, 253, 253);
+      /* display: inline-block; */
+    }
+
+    /* Dark/Light Mode */
+    :root {
+      --bg: #f5f7fb;
+      --panel: #ffffff;
+      --text: #111827;
+      --muted: #6b7280;
+      --accent: #4c73f3;
+      --skill-bg: #f4f6fa;
+      --card-shadow: 0 8px 24px rgba(44, 62, 80, 0.08);
+    }
+
+    .theme-dark {
+      --bg: #071022;
+      --panel: #0f1720;
+      --text: #e6eef6;
+      --muted: #9aa6b2;
+      --accent: #4c73f3;
+      --skill-bg: #0f2130;
+      --card-shadow: 0 12px 36px rgba(0, 0, 0, 0.6);
+    }
+
+    html,
+    body {
+      background: var(--bg) !important;
+      color: var(--text) !important;
+      transition: background .22s ease, color .22s ease;
+    }
+
+    /* ====== Theme Variables ====== */
+    :root {
+      --bg: #f5f7fb;
+      --panel: #ffffff;
+      --text: #111827;
+      --muted: #6b7280;
+      --accent: #4c73f3;
+      --skill-bg: #f4f6fa;
+      --card-shadow: 0 8px 24px rgba(44, 62, 80, 0.08);
+    }
+
+    .theme-dark {
+      --bg: #071022;
+      --panel: #0f1720;
+      --text: #e6eef6;
+      --muted: #9aa6b2;
+      --accent: #4c73f3;
+      --skill-bg: #0f2130;
+      --card-shadow: 0 12px 36px rgba(0, 0, 0, 0.6);
+    }
+
+    /* ====== Global Styles ====== */
+    html,
+    body {
+      background: var(--bg) !important;
+      color: var(--text) !important;
+      transition: background 0.22s ease, color 0.22s ease;
+    }
+
+    a {
+      color: var(--accent) !important;
+    }
+
+    /* ====== Panels & Sections ====== */
+    .section-wrapper,
+    .content,
+    .theiaStickySidebar,
+    .accordion-body,
+    .portfolio-thumb,
+    .card,
+    .resume-section,
+    .left-col-block .header,
+    .left-col-block .content,
+    .tab-pane,
+    .tab-content,
+    .bg-light {
+      background: var(--panel) !important;
+      color: var(--text) !important;
+      transition: background 0.22s ease, color 0.22s ease;
+    }
+
+    /* ====== Tabs ====== */
+    .nav-tabs .nav-link {
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid transparent;
+    }
+
+    .nav-tabs .nav-link.active {
+      background: var(--panel) !important;
+      color: var(--accent) !important;
+      border-color: rgba(0, 0, 0, 0.05) !important;
+      box-shadow: var(--card-shadow);
+    }
+
+    #experienceTabs {
+      background: var(--panel) !important;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .theme-dark #experienceTabs {
+      border-bottom-color: rgba(255, 255, 255, 0.05);
+    }
+
+    /* ====== Accordion ====== */
+    .accordion-button,
+    .accordion-button.bg-light {
+      background: var(--panel) !important;
+      color: var(--text) !important;
+      border: 1px solid rgba(0, 0, 0, 0.04) !important;
+      box-shadow: none !important;
+    }
+
+    .accordion-button:not(.collapsed) {
+      background: var(--panel) !important;
+      color: var(--text) !important;
+    }
+
+    .accordion-collapse .accordion-body {
+      background: transparent !important;
+      color: var(--text) !important;
+      padding: 1rem 1rem 1.25rem;
+      border-radius: 10px;
+    }
+
+    .accordion-item {
+      background: transparent;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .theme-dark .accordion-item {
+      border-color: rgba(255, 255, 255, 0.05);
+    }
+
+    /* ====== Jobs & Experience ====== */
+    .job {
+      background: var(--panel) !important;
+      color: var(--text) !important;
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      transition: background 0.22s ease, color 0.22s ease;
+    }
+
+    .job:last-child {
+      margin-bottom: 0;
+    }
+
+    .job .job-title,
+    .job .job-duration,
+    .job i,
+    .accordion-body i,
+    .accordion-body p,
+    .accordion-body ul li {
+      color: var(--muted) !important;
+    }
+
+    .job .job-title a,
+    .accordion-body a {
+      color: var(--accent) !important;
+    }
+
+    /* ====== Cards & Portfolio ====== */
+    .card,
+    .portfolio-thumb {
+      border-radius: 12px;
+    }
+
+    .card-img-top {
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+    }
+
+    .project-card-hover:hover {
+      box-shadow: var(--card-shadow) !important;
+      transform: translateY(-4px) scale(1.02);
+    }
+
+    /* ====== Skills & Badges ====== */
+    .skill-pill,
+    .skills-badge {
+      background: var(--skill-bg) !important;
+      color: var(--text) !important;
+      font-weight: 600;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      box-shadow: none;
+    }
+
+    .theme-dark .skill-pill,
+    .theme-dark .skills-badge {
+      border-color: rgba(255, 255, 255, 0.06);
+    }
+
+    /* ====== Theme Toggle Button ====== */
+    #theme-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--text);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      padding: 6px 10px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background 0.18s, border-color 0.18s, color 0.18s;
+    }
+
+    .theme-dark #theme-toggle {
+      border-color: rgba(255, 255, 255, 0.08);
+    }
+
+    @media (max-width: 767.98px) {
+      #theme-toggle {
+        position: static;
+        margin-top: 8px;
+      }
+    }
+  </style>
+
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar">
+  <div id="main-wrapper">
+    <!-- Page Preloader -->
+    <div id="preloader">
+      <div id="status">
+        <div class="status-mes"></div>
+      </div>
+    </div>
+
+    <div class="columns-block container">
+      <div class="left-col-block blocks">
+        <header class="header theiaStickySidebar">
+          <div class="profile-img" style="width: 60%; justify-self: anchor-center;">
+            <img src="img/profile.jpg" class="img-fluid" alt="" style="border-radius: 50%;" />
+          </div>
+          <div class="content">
+            <h1>Awinash</h1>
+            <!-- <span class="lead">Backend Developer</span> -->
+
+            <div class="about-text">
+              <p>
+                Python Developer with over 2 years of experience designing and developing scalable, high-performance
+                backend systems using Django. Skilled in building robust system architectures that meet
+                real-world business demands with clean, maintainable code.
+              </p>
+            </div>
+
+            <!-- Theme toggle (placed in header) -->
+            <div style="position: absolute; top: 18px; right: 18px; z-index: 40;">
+              <button id="theme-toggle" aria-label="Toggle theme" title="Toggle theme">🌙</button>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="row justify-content-center">
+              <div class="col-md-12 d-flex flex-column align-items-start align-items-md-start align-items-center">
+                <address class="w-100 d-flex align-items-center justify-content-center justify-content-md-start"
+                  style="gap: 8px; margin-bottom: 8px;">
+                  <i class="fa fa-map-marker" aria-hidden="true"></i>
+                  Karachi, Pakistan
+                </address>
+                <address class="w-100 d-flex align-items-center justify-content-center justify-content-md-start"
+                  style="gap: 8px;">
+                  <i class="fa fa-envelope" aria-hidden="true"></i>
+                  <a href="mailto:awinashgoswami3@gmail.com">awinashgoswami3@gmail.com</a>
+                </address>
+
+              </div>
+            </div>
+
+            <ul class="social-icon">
+              <li><a href="https://www.linkedin.com/in/awinashgoswami/" target="_blank"><i class="fa fa-linkedin"
+                    aria-hidden="true"></i></a></li>
+              <li><a href="https://github.com/AwinashGoswami" target="_blank"><i class="fa fa-github"
+                    aria-hidden="true"></i></a></li>
+              <li><a href="https://medium.com/@awinashgoswami" target="_blank"><i class="fa fa-medium"
+                    aria-hidden="true"></i></a></li>
+            </ul>
+          </div>
+
+        </header>
+        <!-- .header-->
+      </div>
+      <!-- .left-col-block -->
+
+
+      <div class="right-col-block blocks">
+        <div class="theiaStickySidebar">
+
+
+          <!-- Work Experience -->
+          <section class="section-wrapper section-experience gray-bg">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="section-title">
+                    <h2>Work Experience</h2>
+                  </div>
+                </div>
+              </div>
+
+
+              <!-- new code start -->
+              <div class="experience-section">
+
+                <!-- Tabs -->
+                <ul class="nav nav-tabs" id="experienceTabs" role="tablist">
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="nayatel-tab" data-bs-toggle="tab" data-bs-target="#nayatel"
+                      type="button" role="tab">Nayatel</button>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="SIBA-tab" data-bs-toggle="tab" data-bs-target="#SIBA" type="button"
+                      role="tab">SIBA</button>
+                  </li>
+                </ul>
+
+                <!-- Tab Content -->
+                <div class="tab-content" id="experienceTabsContent">
+                  <!-- Nayatel -->
+                  <div class="tab-pane fade show active" id="nayatel" role="tabpanel">
+                    <div class="job">
+                      <div>
+                        <div class="job-title">Software Engineer - <a href="https://www.nayatel.com/"
+                            target="_blank">Nayatel</a>
+                        </div>
+                        <div class="job-duration">Feb 2024 - Mar 2025</div>
+                      </div>
+
+
+                      <ul style="list-style-type:circle; padding-left: 25px; padding-top: 25px;">
+                        <li>
+                          <i>
+                            Developed OpenStack-based backend for Nayatel’s Cloud Portal
+                            serving 10,000+ customers, enabling scalable virtual instances,
+                            floating IPs, and automated network configurations.
+                          </i>
+                        </li>
+                        <li>
+                          <i>
+                            Optimized Nayatel Cloud APIs, reducing response latency
+                            by 30% and improving scalability for 1000+ concurrent users.
+                          </i>
+                        </li>
+                        <li>
+                          <i>
+                            Designed authentication module and subscription APIs supporting web
+                            hosting, NMail, and backup services.
+                          </i>
+                        </li>
+                        <li>
+                          <i>
+                            Enhanced customer experience by automating service provisioning and
+                            scaling.
+                          </i>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div class="job">
+                      <div>
+                        <div class="job-title">Junior Software Engineer <a href="https://www.nayatel.com/"
+                            target="_blank">Nayatel</a>
+                        </div>
+                        <div class="job-duration">Feb 2023 - Feb 2024</div>
+                      </div>
+
+                      <ul style="list-style-type:circle; padding-left: 25px; padding-top: 25px;">
+                        <li>
+                          <i>
+                            Automated customer support by developing a WhatsApp chatbot, reducing response times by 40%.
+                          </i>
+                        </li>
+                        <li>
+                          <i>
+                            Optimized Cloud APIs reducing latency by 30%.
+                          </i>
+                        </li>
+                        <li>
+                          <i>
+                            Built Cloud Customer Data Verification Module to improve accuracy and monitoring.
+                          </i>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <!-- SIBA -->
+                  <div class="tab-pane fade" id="SIBA" role="tabpanel">
+                    <div class="job">
+                      <div>
+                        <div class="job-title">CS Instructor - <a href="https://www.iba-suk.edu.pk/"
+                            target="_blank">SIBA</a>
+                        </div>
+                        <div class="job-duration">Oct 2019 - Feb 2022</div>
+                      </div>
+
+                      <ul style="list-style-type:circle; padding-left: 25px; padding-top: 25px;">
+                        <li>
+                          <i>
+                            Delivered hands-on coding sessions on web development for 150+ students.
+                          </i>
+                        </li>
+                        <li>
+                          <i>
+                            Mentored final-year projects, improving project delivery success rate by 20%.
+                          </i>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- New code ends -->
+            </div>
+            <!-- .container-fluid -->
+          </section>
+
+          <!-- Portfolio Section -->
+          <section class="section-wrapper portfolio-section">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="section-title">
+                    <h2>Portfolio</h2>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion" id="accordionExample">
+
+                <!-- Project -->
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button bg-light" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                      Nayatel Cloud Portal
+                    </button>
+                  </h2>
+                  <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      <div class="row">
+                        <div class="col-sm-12 col-md-4">
+                          <div class="portfolio-thumb">
+                            <img src="img/portfolio-3.png" width="100%" height="auto" style="border-radius: 15px;">
+                          </div>
+                        </div>
+                        <div class="col-sm-12 col-md-8">
+                          <i>
+                            An OpenStack-powered cloud management platform built for 10,000+ customers, providing
+                            scalable virtual machine deployment, floating IP management, and automated network
+                            configurations through a robust Django backend.
+                          </i>
+
+                          <div>
+                            <a href="https://cloud.nayatel.com/" target="_blank"
+                              style="color:#4c73f3; font-weight: 600;">Visit
+                              Project...</a>
+                          </div>
+
+                          <div class="d-flex flex-wrap py-2">
+                            <span class="skills-badge py-1 px-2 rounded">
+                              Django
+                            </span>
+                            <span class="skills-badge py-1 px-2 rounded">
+                              DRF
+                            </span>
+                            <span class="skills-badge py-1 px-2 rounded">
+                              Raw SQL
+                            </span>
+                            <span class="skills-badge py-1 px-2 rounded">
+                              PostgreSQL
+                            </span>
+                            <span class="skills-badge py-1 px-2 rounded">
+                              Git
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Project -->
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button bg-light" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                      Nayatel Cloud Website
+                    </button>
+                  </h2>
+                  <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      <div class="row">
+                        <div class="col-sm-12 col-md-4">
+                          <div class="portfolio-thumb">
+                            <img src="img/portfolio-4.png" width="100%" height="auto" style="border-radius: 15px;">
+                          </div>
+                        </div>
+                        <div class="col-sm-12 col-md-8">
+                          <i>
+                            Nayatel Cloud — Pakistan-hosted, enterprise-grade public cloud platform offering on-demand
+                            compute (IaaS & VPS), storage, and networking with local data residency, self-service
+                            portal, and scalable infrastructure.
+                          </i>
+
+                          <div>
+                            <a href="https://nayatel.com/cloud" target="_blank"
+                              style="color:#4c73f3; font-weight: 600;">Visit
+                              Project...</a>
+                          </div>
+
+                          <div class="d-flex flex-wrap py-2">
+                            <span class="skills-badge py-1 px-2 rounded">
+                              Django
+                            </span>
+                            <span class="skills-badge py-1 px-2 rounded">
+                              DRF
+                            </span>
+                            <span class="skills-badge py-1 px-2 rounded">
+                              Raw SQL
+                            </span>
+                            <span class="skills-badge py-1 px-2 rounded">
+                              PostgreSQL
+                            </span>
+                            <span class="skills-badge py-1 px-2 rounded">
+                              Git
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Project -->
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button bg-light" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                      Matlay
+                    </button>
+                  </h2>
+                  <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      <div class="row">
+                        <div class="col-sm-12 col-md-4">
+                          <div class="portfolio-thumb">
+                            <img src="img/portfolio-5.png" width="100%" height="auto" style="border-radius: 15px;">
+                          </div>
+                        </div>
+                        <div class="col-sm-12 col-md-8">
+                          <i>
+                            Matlay Cloud — A versatile IaaS and SaaS provider offering scalable
+                            Infrastructure-as-a-Service, Kubernetes-as-a-Service, Backup/DR-as-a-Service and more,
+                            empowering businesses with agile cloud infrastructure and streamlined application delivery.
+                          </i>
+
+                          <div>
+                            <a href="https://matlay.com" target="_blank" style="color:#4c73f3; font-weight: 600;">Visit
+                              Project...</a>
+                          </div>
+
+                          <div class="d-flex flex-wrap py-2">
+                            <span class="skills-badge py-1 px-2 rounded">
+                              Django
+                            </span>
+                            <span class="skills-badge py-1 px-2 rounded">
+                              DRF
+                            </span>
+                            <span class="skills-badge py-1 px-2 rounded">
+                              Raw SQL
+                            </span>
+                            <span class="skills-badge py-1 px-2 rounded">
+                              PostgreSQL
+                            </span>
+                            <span class="skills-badge py-1 px-2 rounded">
+                              Git
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Project -->
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingFour">
+                    <button class="accordion-button bg-light" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                      School Billing System
+                    </button>
+                  </h2>
+                  <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      <div class="row">
+                        <div class="col-sm-12 col-md-4">
+                          <div class="portfolio-thumb">
+                            <img src="img/portfolio-2.jpg" width="100%" height="auto" style="border-radius: 15px;">
+                          </div>
+                        </div>
+                        <div class="col-sm-12 col-md-8">
+                          <p>
+                            <i>
+                              A full-featured Django application that automates student fee management with accuracy and
+                              transparency. It includes student and class management, automated ledger updates for
+                              payments and refunds, and real-time summaries at school, class, and student levels — all
+                              secured with JWT authentication and built using a clean, modular architecture.
+                            </i>
+                          </p>
+
+                          <div>
+                            <a href="https://github.com/AwinashGoswami/school-billing-system-mern" target="_blank"
+                              style="color:#4c73f3; font-weight: 600;">Visit Project...</a>
+                          </div>
+
+                          <div class="d-flex flex-wrap py-2">
+                            <span class="skills-badge py-1 px-2 rounded">
+                              Django
+                            </span>
+                            <span class="skills-badge py-1 px-2 rounded">
+                              Django ORM
+                            </span>
+                            <span class="skills-badge py-1 px-2 rounded">
+                              Raw SQL
+                            </span>
+                            <span class="skills-badge py-1 px-2 rounded">
+                              PostgreSQL
+                            </span>
+                            <span class="skills-badge py-1 px-2 rounded">
+                              JWT
+                            </span>
+                            <span class="skills-badge py-1 px-2 rounded">
+                              Git
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Skills Section -->
+          <section class="expertise-wrapper section-wrapper gray-bg">
+            <div class="container-fluid">
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="section-title">
+                    <h2>Skills & Toolkit</h2>
+                  </div>
+
+                  <ul class="skills-list">
+                    <li class="list-inline-item text-center skill-pill">
+                      <i class="devicon-python-plain colored devicon-font-size"></i>
+                      <div>Python</div>
+                    </li>
+                    <li class="list-inline-item text-center skill-pill">
+                      <i class="devicon-django-plain colored devicon-font-size"></i>
+                      <div>Django</div>
+                    </li>
+                    <li class="list-inline-item text-center skill-pill">
+                      <i class="devicon-djangorest-plain colored devicon-font-size"></i>
+                      <div>DRF</div>
+                    </li>
+                    <li class="list-inline-item text-center skill-pill">
+                      <i class="devicon-postgresql-plain colored devicon-font-size"></i>
+                      <div>Postgres</div>
+                    </li>
+                    <li class="list-inline-item text-center skill-pill">
+                      <i class="devicon-mysql-plain colored devicon-font-size"></i>
+                      <div>MySQL</div>
+                    </li>
+                    <li class="list-inline-item text-center skill-pill">
+                      <i class="devicon-git-plain colored devicon-font-size"></i>
+                      <div>Git</div>
+                    </li>
+                    <li class="list-inline-item text-center skill-pill">
+                      <i class="devicon-postman-plain colored devicon-font-size"></i>
+                      <div>Postman</div>
+                    </li>
+
+                    <li class="list-inline-item text-center skill-pill">
+                      <i class="devicon-linux-plain colored devicon-font-size"></i>
+                      <div>Linux</div>
+                    </li>
+
+                    <li class="list-inline-item text-center skill-pill">
+                      <i class="devicon-docker-plain colored devicon-font-size"></i>
+                      <div>Docker</div>
+                    </li>
+
+                  </ul>
+                </div>
+              </div>
+              <!-- .row -->
+            </div>
+          </section>
+
+          <!-- Education Section -->
+          <section class="section-wrapper section-education">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="section-title">
+                    <h2>Education</h2>
+                  </div>
+                </div>
+              </div>
+              <!--.row-->
+              <div class="row">
+                <div class="col-md-12">
+
+                  <!-- Item -->
+                  <div class="content-item">
+                    <small>2014 - 2018</small>
+                    <h3>BS - Computer Science</h3>
+                    <h4>UMT</h4>
+                    <p>Lahore, Pakistan</p>
+                  </div>
+
+                </div>
+              </div>
+              <!--.row-->
+            </div>
+            <!-- .container-fluid -->
+          </section>
+
+          <!-- Download CV -->
+          <section class="section-wrapper section-education">
+            <div class="container-fluid">
+              <!--.row-->
+              <div class="row">
+                <div class="col-md-12">
+                  <!-- Item -->
+                  <div class="content-item ">
+                    <a class="btn btn-primary"
+                      href="https://docs.google.com/document/d/1eM7P4RH2uk6ZiElWcg9ChMGtjNA_g_N2OkD2tuXcjCs/edit?usp=sharing"
+                      target="_blank">
+                      Download CV
+                    </a>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <!-- Sticky -->
+      </div>
+      <!-- .right-col-block -->
+    </div>
+    <!-- .columns-block -->
+  </div>
+  <!-- #main-wrapper -->
+
+  <!-- jquery -->
+  <script src="js/jquery-2.1.4.min.js"></script>
+
+  <!-- Bootstrap -->
+  <script src="js/theia-sticky-sidebar.js"></script>
+  <script src="js/scripts.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Theme switcher script -->
+  <script>
+    (function () {
+      const key = 'site-theme';
+      const toggle = document.getElementById('theme-toggle');
+      const root = document.documentElement;
+
+      function applyTheme(t) {
+        root.classList.toggle('theme-dark', t === 'dark');
+        if (toggle) toggle.textContent = t === 'dark' ? '☀️' : '🌙';
+      }
+
+      // initial: localStorage -> prefers-color-scheme -> default light
+      let saved = null;
+      try { saved = localStorage.getItem(key); } catch (e) { saved = null; }
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const initial = saved || (prefersDark ? 'dark' : 'light');
+      applyTheme(initial);
+
+      if (toggle) {
+        toggle.addEventListener('click', function () {
+          const next = root.classList.contains('theme-dark') ? 'light' : 'dark';
+          applyTheme(next);
+          try { localStorage.setItem(key, next); } catch (e) { /* ignore */ }
+        });
+      }
+
+      // optional: react to OS changes if user hasn't explicitly chosen
+      if (!saved && window.matchMedia) {
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+          applyTheme(e.matches ? 'dark' : 'light');
+        });
+      }
+    })();
+  </script>
+</body>
+
+</html>
